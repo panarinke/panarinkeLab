@@ -22,7 +22,7 @@ public class BankOfficeServiceImpl implements BankOfficeService {
      * @param bank    Банк, к которому пренадлежит банковский офис.
      */
     @Override
-    public void create(String name, Address address, Bank bank) {
+    public BankOffice create(String name, Address address, Bank bank) {
         Random random = new Random();
 
         BankOffice bankOffice = BankOffice
@@ -30,7 +30,7 @@ public class BankOfficeServiceImpl implements BankOfficeService {
                 .id(this.id++)
                 .name(name)
                 .address(address)
-                .status(WorkStatus.getRandomStatus())
+                .status(WorkStatus.WORKING)
                 .placeAtmAvailable(random.nextBoolean())
                 .bankAtms(new ArrayList<>())
                 .creditAvailable(random.nextBoolean())
@@ -43,6 +43,8 @@ public class BankOfficeServiceImpl implements BankOfficeService {
 
         bank.getBankOffices().add(bankOffice);
         bankOffices.add(bankOffice);
+
+        return bankOffice;
     }
 
     /**
@@ -53,7 +55,7 @@ public class BankOfficeServiceImpl implements BankOfficeService {
      */
     @Override
     public BankOffice getBankOffice(int id) {
-        return this.bankOffices.get(id);
+            return this.bankOffices.get(id);
     }
 
 
@@ -79,5 +81,10 @@ public class BankOfficeServiceImpl implements BankOfficeService {
     public void delete(int id, Bank bank) {
         bank.getBankOffices().remove(id);
         bankOffices.remove(id);
+    }
+
+    @Override
+    public ArrayList<BankOffice> getBankOffices() {
+        return this.bankOffices;
     }
 }

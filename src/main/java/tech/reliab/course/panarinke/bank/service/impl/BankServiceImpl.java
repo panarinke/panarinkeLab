@@ -17,7 +17,7 @@ public class BankServiceImpl implements BankService {
      * @param name Имя банка.
      */
     @Override
-    public void createBank(String name) {
+    public Bank createBank(String name) {
         Random random = new Random();
         int rate = random.nextInt(100);
 
@@ -30,11 +30,13 @@ public class BankServiceImpl implements BankService {
                 .employees(new ArrayList<>())
                 .clients(new ArrayList<>())
                 .rate(rate)
-                .moneyAmount(random.nextLong(1_000_000L))
+                .moneyAmount(random.nextLong(1_000_000L, 10_000_000L))
                 .interestRate((int) (20 - rate / 10D))
                 .build();
 
         this.banks.add(bank);
+
+        return bank;
     }
 
     /**
@@ -157,5 +159,10 @@ public class BankServiceImpl implements BankService {
     @Override
     public void deleteClient(int id, User user) {
         this.banks.get(id).getClients().remove(user);
+    }
+
+    @Override
+    public ArrayList<Bank> getBanks() {
+        return this.banks;
     }
 }

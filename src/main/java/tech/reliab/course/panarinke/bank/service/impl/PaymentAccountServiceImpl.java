@@ -21,7 +21,7 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
      * @param bank Банк, в котором открыт платёжный счет.
      */
     @Override
-    public void create(User user, Bank bank) {
+    public PaymentAccount create(User user, Bank bank) {
         Random random = new Random();
 
         PaymentAccount paymentAccount = PaymentAccount
@@ -34,6 +34,8 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
 
         user.getPaymentAccounts().add(paymentAccount);
         paymentAccounts.add(paymentAccount);
+
+        return paymentAccount;
     }
 
     /**

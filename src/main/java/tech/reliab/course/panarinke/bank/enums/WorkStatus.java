@@ -7,7 +7,7 @@ public enum WorkStatus {
     NOT_WORKING("Not work"),
     NO_MONEY("No money");
 
-    private String status;
+    private final String status;
 
     WorkStatus(String status) {
         this.status = status;
@@ -18,5 +18,9 @@ public enum WorkStatus {
 
         WorkStatus[] values = values();
         return values[random.nextInt(values.length)];
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

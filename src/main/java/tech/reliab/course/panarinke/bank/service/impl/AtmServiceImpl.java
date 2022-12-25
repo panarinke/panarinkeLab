@@ -41,7 +41,7 @@ public class AtmServiceImpl implements AtmService {
 
         bankAtms.add(bankAtm);
         bank.getBankATMS().add(bankAtm);
-
+        office.getBankAtms().add(bankAtm);
     }
 
     /**

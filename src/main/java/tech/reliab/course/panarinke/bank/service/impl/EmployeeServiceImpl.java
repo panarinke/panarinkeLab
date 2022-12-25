@@ -18,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final ArrayList<Employee> employees = new ArrayList<>(0);
 
     @Override
-    public void create(FCs fcs, String post, Bank bank, BankOffice office) {
+    public Employee create(FCs fcs, String post, Bank bank, BankOffice office) {
 
         Random random = new Random();
         Employee employee = Employee
@@ -36,6 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         bank.getEmployees().add(employee);
         this.employees.add(employee);
+        return employee;
     }
 
     /**

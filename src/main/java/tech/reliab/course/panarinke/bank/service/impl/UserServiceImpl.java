@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
      * @param workPlace Место работы
      */
     @Override
-    public void create(FCs fcs, String workPlace, Bank bank) {
+    public User create(FCs fcs, String workPlace, Bank bank) {
         Random random = new Random();
         var userIncome = random.nextInt(100_000);
 
@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
         user.getBanks().add(bank);
         bank.getClients().add(user);
         users.add(user);
+        return user;
     }
 
     /**
@@ -143,5 +144,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deletePaymentAccount(int id, PaymentAccount paymentAccount) {
         this.users.get(id).getPaymentAccounts().remove(paymentAccount);
+    }
+    /**
+     *
+     * @return Всех пользователей.
+     */
+    @Override
+    public ArrayList<User> getUsers() {
+        return this.users;
     }
 }

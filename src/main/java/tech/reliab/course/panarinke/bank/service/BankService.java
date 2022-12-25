@@ -2,8 +2,10 @@ package tech.reliab.course.panarinke.bank.service;
 
 import tech.reliab.course.panarinke.bank.entity.*;
 
+import java.util.ArrayList;
+
 public interface BankService {
-    void createBank(String name);
+    Bank createBank(String name);
     Bank getBank(int id);
     void update(int id, Bank bank);
     void delete(int id);
@@ -19,4 +21,6 @@ public interface BankService {
 
     void addClient(int id, User user);
     void deleteClient(int id, User user);
+
+    ArrayList<Bank> getBanks();
 }
