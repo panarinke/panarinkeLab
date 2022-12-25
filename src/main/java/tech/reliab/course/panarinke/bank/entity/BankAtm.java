@@ -7,10 +7,11 @@ import lombok.ToString;
 import tech.reliab.course.panarinke.bank.entity.auxiliary.Address;
 import tech.reliab.course.panarinke.bank.enums.WorkStatus;
 
+import java.io.Serializable;
 @Getter
 @Setter
 @Builder
-public class BankAtm {
+public class BankAtm implements Entity, Serializable {
     /** Id банкомата */
     private long id;
 
@@ -59,5 +60,10 @@ public class BankAtm {
                 ", moneyAmount=" + moneyAmount +
                 ", maintenanceCost=" + maintenanceCost +
                 '}';
+    }
+
+    @Override
+    public String getSimpleName() {
+        return "BankAtm";
     }
 }

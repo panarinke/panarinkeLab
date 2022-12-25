@@ -1,6 +1,5 @@
-package tech.reliab.course.panarinke.bank.enums;
+package tech.reliab.course.panarinke.bank.exceptions;
 
-import tech.reliab.course.panarinke.bank.entity.Entity;
 import tech.reliab.course.panarinke.bank.enums.CrudOperations;
 
 public class CrudOperationException extends RuntimeException {

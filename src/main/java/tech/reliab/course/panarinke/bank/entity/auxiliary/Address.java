@@ -1,10 +1,13 @@
 package tech.reliab.course.panarinke.bank.entity.auxiliary;
 
-public class Address {
-    private String country;
-    private String city;
-    private String street;
-    private String house;
+import java.io.Serializable;
+
+public class Address implements Serializable {
+
+    private final String country;
+    private final String city;
+    private final String street;
+    private final String house;
 
     public Address(String country, String city, String street, String house) {
         this.country = country;

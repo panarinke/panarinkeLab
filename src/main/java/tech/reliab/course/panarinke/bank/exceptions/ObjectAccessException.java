@@ -1,6 +1,5 @@
 package tech.reliab.course.panarinke.bank.exceptions;
 
-import tech.reliab.course.panarinke.bank.entity.Entity;
 public class ObjectAccessException extends RuntimeException {
     private final String entityName;
     private final String reason;
@@ -18,6 +17,6 @@ public class ObjectAccessException extends RuntimeException {
 
     @Override
     public String getMessage() {
-        return "Object accesse error \"" + entityName + "\", reason " + reason;
+        return "Object access error \"" + entityName + "\", reason " + reason;
     }
 }

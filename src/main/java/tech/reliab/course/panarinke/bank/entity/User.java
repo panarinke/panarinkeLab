@@ -8,11 +8,12 @@ import tech.reliab.course.panarinke.bank.entity.auxiliary.FCs;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Builder
-public class User {
+public class User implements Entity, Serializable {
 
     /** Id клиента */
     private long id;
@@ -54,5 +55,10 @@ public class User {
                 ", paymentAccounts=" + paymentAccounts +
                 ", rate=" + rate +
                 '}';
+    }
+
+    @Override
+    public String getSimpleName() {
+        return "User";
     }
 }

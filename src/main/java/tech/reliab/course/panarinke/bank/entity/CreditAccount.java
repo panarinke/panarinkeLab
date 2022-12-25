@@ -6,11 +6,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Builder
-public class CreditAccount {
+public class CreditAccount implements Entity, Serializable {
     /** Id кредитного счета */
     private long id;
 
@@ -58,5 +59,10 @@ public class CreditAccount {
                 ", monthPayment=" + monthPayment +
                 ", interestRate=" + interestRate +
                 '}';
+    }
+
+    @Override
+    public String getSimpleName() {
+        return "CreditAccount";
     }
 }

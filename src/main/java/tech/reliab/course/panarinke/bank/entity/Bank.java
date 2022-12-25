@@ -4,12 +4,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Getter
 @Setter
 @Builder
-public class Bank {
+public class Bank implements Entity, Serializable{
     /** Id банка */
     private long id;
 
@@ -50,5 +51,10 @@ public class Bank {
                 ", money amount = " + moneyAmount +
                 ", interest rate=" + interestRate +
                 '}';
+    }
+
+    @Override
+    public String getSimpleName() {
+        return "Bank";
     }
 }

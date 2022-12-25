@@ -1,7 +1,5 @@
 package tech.reliab.course.panarinke.bank.exceptions;
 
-import tech.reliab.course.panarinke.bank.entity.Entity;
-
 public class NotFoundException extends RuntimeException {
     private final int id;
     private final String entityName;

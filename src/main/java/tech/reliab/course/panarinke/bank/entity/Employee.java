@@ -7,11 +7,12 @@ import lombok.ToString;
 import tech.reliab.course.panarinke.bank.entity.auxiliary.FCs;
 
 import java.util.Date;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Builder
-public class Employee {
+public class Employee implements Entity, Serializable {
     /** Id сотрудника */
     private long id;
 
@@ -52,5 +53,10 @@ public class Employee {
                 ", creditAvailable=" + creditAvailable +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public String getSimpleName() {
+        return "Employee";
     }
 }

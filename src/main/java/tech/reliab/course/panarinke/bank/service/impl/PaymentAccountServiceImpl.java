@@ -5,6 +5,7 @@ import tech.reliab.course.panarinke.bank.entity.PaymentAccount;
 import tech.reliab.course.panarinke.bank.entity.User;
 import tech.reliab.course.panarinke.bank.service.PaymentAccountService;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -17,7 +18,7 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
     /**
      * Создает объект платёжного счета.
      *
-     * @param user Воаделец платёжного счета.
+     * @param user Владелец платёжного счета.
      * @param bank Банк, в котором открыт платёжный счет.
      */
     @Override
@@ -75,5 +76,28 @@ public class PaymentAccountServiceImpl implements PaymentAccountService {
     public void delete(int userId, int id, PaymentAccount paymentAccount, User user) {
         user.getPaymentAccounts().remove(userId);
         this.paymentAccounts.remove(paymentAccount);
+    }
+
+    @Override
+    public void writeToFile(ArrayList<PaymentAccount> paymentAccounts, String fileName) throws IOException {
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+
+            objectOutputStream.writeObject(paymentAccounts);
+            objectOutputStream.flush();
+        }
+    }
+
+    @Override
+    public ArrayList<PaymentAccount> readFromFile(String fileName) throws IOException, ClassNotFoundException {
+
+        ArrayList<PaymentAccount> paymentAccounts;
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
+
+            paymentAccounts = (ArrayList<PaymentAccount>) in.readObject();
+
+        }
+        return paymentAccounts;
     }
 }

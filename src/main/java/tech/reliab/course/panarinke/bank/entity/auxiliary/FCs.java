@@ -1,6 +1,9 @@
 package tech.reliab.course.panarinke.bank.entity.auxiliary;
 
-public class FCs {
+import java.io.Serializable;
+
+public class FCs implements Serializable {
+
     private String name;
     private String lastName;
     private String patronymic;

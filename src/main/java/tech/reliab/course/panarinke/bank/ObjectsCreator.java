@@ -58,11 +58,18 @@ public class ObjectsCreator {
                         bank
                 );
 
-                userService.create(
+                var user = userService.create(
                         new FCs("Igor", "Sheplyakov", "Alexandrovich"),
                         "Programmer",
                         bank
                 );
+                var paymentAccountCount = 4;
+                for (int p = 0; p < paymentAccountCount; p++) {
+                    var paymentAccount = paymentAccountService.create(
+                            user,
+                            bank
+                    );
+                }
 
                 int employeesCount = random.nextInt(5, 10);
 

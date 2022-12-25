@@ -4,11 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Builder
-public class PaymentAccount {
+public class PaymentAccount implements Entity, Serializable {
     /** Id платёжного счета */
     private long id;
 
@@ -25,7 +26,14 @@ public class PaymentAccount {
     public String toString() {
         return "PaymentAccount{" +
                 "id=" + id +
+                ", user=" + user.getId() +
+                ", bank=" + bank.getId() +
                 ", moneyAmount=" + moneyAmount +
                 '}';
+    }
+
+    @Override
+    public String getSimpleName() {
+        return "PaymentAccount";
     }
 }
